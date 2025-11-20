@@ -2,7 +2,40 @@
 --No other person's work has been used without due acknowledgment and I have not made my work available to anyone else
 
 
+
+-----create a database called lab4db---------
 use lab4db;
+
+
+CREATE TABLE suppliers (
+supp_id INT PRIMARY KEY,
+company VARCHAR(100),
+addr VARCHAR(100),
+city VARCHAR(50),
+prov CHAR(2),
+postal VARCHAR(10),
+contact VARCHAR(100),
+tel VARCHAR(20),
+fax VARCHAR(20)
+)
+
+CREATE TABLE items (
+item_id INT PRIMARY KEY,
+descr VARCHAR(100),
+supp_id INT,
+cost DECIMAL(10,2),
+markup DECIMAL(10,2),
+stock INT,
+reorder INT,
+FOREIGN KEY (supp_id) REFERENCES suppliers(supp_id)
+)
+
+CREATE TABLE sales (
+sales_id INT PRIMARY KEY,
+item_id INT,
+qty INT,
+FOREIGN KEY (item_id) REFERENCES items(item_id)
+)
 
 
 ------------------------------INSERTING THE DATA INTO THE TABLES-----------------------------------
@@ -74,6 +107,7 @@ FROM items
 WHERE cost BETWEEN 50 AND 100
 GROUP BY supp_id
 HAVING SUM(cost) IS NOT NULL;
+
 
 
 
