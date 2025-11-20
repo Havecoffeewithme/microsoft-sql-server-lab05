@@ -1,0 +1,83 @@
+--I Percy Ratheko student number - 000979076, certify that this material is my original work. 
+--No other person's work has been used without due acknowledgment and I have not made my work available to anyone else
+
+
+use lab4db;
+
+
+------------------------------INSERTING THE DATA INTO THE TABLES-----------------------------------
+
+/**
+INSERT INTO suppliers (supp_id, company, addr, city, prov, postal, contact, tel, fax) VALUES
+(1, 'Orbit Tool', '36 Waterford', 'Winnipeg', 'MB', 'W8F3A6', 'Kelly Truton', '204-560-9812', '204-560-9810'),
+(2, 'CageCo', '43 Hillway', 'Alliston', 'ON', 'S3A4D1', 'Al Stansill', '705-435-8741', '705-431-6510'),
+(3, 'Allair Pumps', '2765 Blankint', 'Edmonton', 'AB', 'G6F5S2', 'Giselle Mack', '403-335-3607', '403-335-5978'),
+(4, 'Trager', '897 Franklin', 'Peterborough', 'ON', 'F5D4S8', 'Marg Granger', '705-743-5692', '705-745-4452'),
+(5, 'Allamps', '5613 Sumer', 'Winnipeg', 'MB', 'W8G2A4', 'Ellen Szabo', '204-562-3456', '204-563-9878'),
+(6, 'Allamps', '56 Brightway', 'Thunder Bay', 'ON', 'J8F6G7', 'Frank Thorne', '807-344-2883', '807-344-1287'),
+(7, 'DeWalt Tools', '4576 Industrial', 'Kalamazoo', 'MI', '49004', 'Larry Gellman', '517-654-1987', '517-656-3410'),
+(8, 'J.A. Henkels', '1741-16B Glanmore', 'Scarborough', 'ON', 'B7C3J8', 'Gordon Hall', '416-785-1287', '416-785-1232'),
+(9, 'Fusion Glass', '187 Dallard', 'Iroquois Falls', 'ON', 'A3D3S5', 'Stacy Weman', '705-232-9078', '705-235-8712'),
+(10, 'Fusion Glass', '12 Dunford', 'Berwick', 'NS', 'G6F7S8', 'Bill Strong', '902-538-4571', '902-538-1195');
+
+
+
+INSERT INTO items (item_id, descr, supp_id, cost, markup, stock, reorder) VALUES
+(1, 'Handlebars', 1, 10, 6, 4, 6),
+(2, 'Instant Awakener', 1, 20, 6, 2, 4),
+(3, 'Giant Kite Kit', 1, 30, 6, 7, 4),
+(4, 'Detonator', 7, 40, 2, 11, 2),
+(5, 'Adding Machine', 7, 20, 2, 1, 3),
+(6, 'Spikes Kit', 4, 2, 4, 17, 12),
+(7, 'Water Pistol', 3, 100, 3, 11, 10),
+(8, 'Jet Motor', 3, 100, 3, 17, 10),
+(9, 'Birdseed', 3, 100, 3, 4, 5),
+(10, 'Light Bed Springs', 5, 20, 7, 11, 5),
+(11, 'Trick Bone', 5, 20, 7, 8, 5),
+(12, 'Railroad Light Track', 5, 20, 7, 5, 5),
+(13, 'Pest Control Light', 5, 20, 7, 3, 5),
+(14, 'Hi-Speed Tonic', 6, 30, 7, 8, 5),
+(15, 'Boomerang', 6, 50, 7, 2, 5);
+
+
+INSERT INTO sales (sales_id, item_id, qty) VALUES
+(1, 2, 1),
+(2, 7, 1),
+(3, 9, 4),
+(4, 4, 1),
+(5, 2, 3),
+(6, 1, 6),
+(7, 13, 1),
+(8, 6, 1),
+(9, 8, 3),
+(10, 12, 4),
+(11, 14, 2);
+
+**/
+
+-------test------
+--select * from suppliers;
+--select * from items;
+--select * from sales;
+
+
+-------select statement 1 -------
+SELECT supp_id, MAX(cost)
+FROM items
+GROUP BY supp_id
+HAVING MAX(cost) > 25;
+
+
+------select statement 2   -------
+SELECT supp_id, SUM(cost)
+FROM items
+WHERE cost BETWEEN 50 AND 100
+GROUP BY supp_id
+HAVING SUM(cost) IS NOT NULL;
+
+
+
+
+
+
+
